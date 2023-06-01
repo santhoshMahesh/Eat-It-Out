@@ -13,7 +13,6 @@ const  MealItem=(props)=>{
             amount:Number(amount),
             price:Number(props.price)
         });
-        console.log(cartCtx.items);
     }
     
     return( 

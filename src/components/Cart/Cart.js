@@ -14,8 +14,10 @@ const Cart=props=>{
     };
 
     const cartItemAddHandler=item=>{
-       cartCtx.addItem(item);
+       cartCtx.addInSingular(item)
     };
+
+   
 
 
     const cartItems=(

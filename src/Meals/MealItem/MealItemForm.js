@@ -3,9 +3,9 @@ import Input from '../../UI/Input.js';
 import { useRef ,useState} from 'react';
  
 const MealItemForm= (props)=>{
+    
     const amountInputRef=useRef();
     const [amountIsValid,setAmountIsValid]=useState(true)
-    
     const submitHandler=event=>{
     event.preventDefault();
     const enteredAmount=amountInputRef.current.value;
