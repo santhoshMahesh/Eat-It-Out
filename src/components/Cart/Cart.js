@@ -3,12 +3,14 @@ import Modal from '../../UI/Modal';
 import CartContext from '../../store/cart-context';
 import { useContext } from 'react';
 import CartItem from './CartItem';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'; 
 
 const Cart=props=>{
     const cartCtx = useContext(CartContext);
     const totalAmount=`$${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems=cartCtx.items.length>0;
-    
+    const history=useHistory();
+
     const cartItemRemoveHandler=id=>{
         cartCtx.removeItem(id);
     };
@@ -17,6 +19,10 @@ const Cart=props=>{
        cartCtx.addInSingular(item)
     };
 
+    const navigateToMaps = () => {
+        // 👇️ navigate to /contacts
+        history.push("/Maps");
+      };
    
 
 
@@ -36,7 +42,7 @@ const Cart=props=>{
         <div className={classes.actions}
         >
             <button className={classes['button--alt']} onClick={props.hideCartHandler}>close</button>
-            { hasItems && <button className={classes.button}>Order</button>}
+            { hasItems && <button className={classes.button} onClick={navigateToMaps}>Order</button>}
         </div>
     </Modal>
 };
