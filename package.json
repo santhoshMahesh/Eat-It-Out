@@ -7,6 +7,8 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
     "leaflet": "^1.9.4",
+    "leaflet-control-geocoder": "^2.4.0",
+    "leaflet-routing-machine": "^3.2.12",
     "package.json": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
