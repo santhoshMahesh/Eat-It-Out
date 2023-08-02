@@ -14,8 +14,11 @@ const LeafletRoutingMachine = () => {
             weight:6,
         }
     }).addTo(map)
-  },[]);
-
+  
+    },[]);
+  
+  
+    
   return null
   
 }
