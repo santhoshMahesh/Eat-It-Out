@@ -1,0 +1,1 @@
+export const validPincode = new RegExp('/^[0-9]+$/');

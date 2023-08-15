@@ -10,25 +10,23 @@ const LeafletRoutingMachine = () => {
   
   useEffect(()=>{
     L.Routing.control({
-        waypoints:[L.latLng(13.00,77.55),L.latLng(location1,location2)],
-        lineOptions:{
-            color:"blue",
-            weight:6,
-        }
+      waypoints:[L.latLng(13.00,77.55),L.latLng(location1,location2)],
+      lineOptions:{
+        color:"blue",
+        weight:6,
+      }
     }).addTo(map)
   
-    },[]);
+  },[]);
   
-   var location1=12.9962056
-   var location2=77.5091314;
-    
+  var location1=12.9962056
+  var location2=77.5091314;
+  
   return (
     <div>
       <h1>hello</h1>
     </div>
   )
-  
-  
 }
 
 export default LeafletRoutingMachine
