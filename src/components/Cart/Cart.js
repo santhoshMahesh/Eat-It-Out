@@ -21,7 +21,7 @@ const Cart=props=>{
 
     const navigateToMaps = () => {
         // 👇️ navigate to /contacts
-        history.push("/Maps");
+        history.push("/Checkout");
       };
    
 

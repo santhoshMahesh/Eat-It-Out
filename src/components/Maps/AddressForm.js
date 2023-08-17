@@ -2,9 +2,6 @@ import React ,{useState,useEffect} from 'react'
 import { validPincode } from './Regex';
 import './AddressForm.css';
 //Imports for future component rearranging
-import useGetGeolocation from '../../API/useGetGeolocation';
-import { Handler, circle } from 'leaflet';
-import {getPlacesData} from '../../API/RevGeoCoding';
 
 const AddressForm = ({address}) => {
  
@@ -35,8 +32,6 @@ const AddressForm = ({address}) => {
       address.state=stateL
       address.postcode=postalCode
       address.suburb=area;
-      console.log(address)
-
     }
 
     useEffect(()=>{
@@ -63,7 +58,7 @@ const AddressForm = ({address}) => {
     <input className="address" value={postalCode} name="postalCode" onChange={(e)=>setPostalCode(e.target.value)} type="text" />
     <label>Country</label>
     <input className="address" value={country} name="country" onChange={(e)=>setCountry(e.target.value)} type="text" />
-    <button type="submit">Submit</button>
+    <button type="submit">Confirm Location</button>
     </form>
     </div>    
   )

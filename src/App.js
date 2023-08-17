@@ -1,5 +1,6 @@
 import React, { useState,useContext } from 'react';
 import Maps from './components/Maps/Maps';
+import Checkout from './components/Maps/Checkout';
 import MealHeader from './SPA/MealHeader';
 import {
   BrowserRouter as Router,
@@ -14,7 +15,7 @@ function App(){
       <Router>
         <Switch>
          <Route exact path='/' component={MealHeader} />
-         <Route path="/Maps" component={Maps}/>
+         <Route path="/checkout" component={Checkout}/>
         </Switch>
       </Router>
   )
