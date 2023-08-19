@@ -4,23 +4,35 @@ import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import {useMap} from "react-leaflet";
 
-const LeafletRoutingMachine = () => {
+const LeafletRoutingMachine = ({coordinates}) => {
   const  map=useMap();
   const [data, setData] = useState(null);
   
   useEffect(()=>{
-    L.Routing.control({
-      waypoints:[L.latLng(13.00,77.55),L.latLng(location1,location2)],
+    const control=L.Routing.control({
+      waypoints:[L.latLng(13.00,77.55),L.latLng(coordinates[0],coordinates[1])],
       lineOptions:{
         color:"blue",
         weight:6,
       }
     }).addTo(map)
   
-  },[]);
+    control.on('routeselected', function (e) {
+      const route = e.route;
+      const distance = route.summary.totalDistance; // Get the total distance in meters
+      console.log(`Total Distance: ${distance} meters`);
+    });
+
+    control.on('waypointschanged', function (e) {
+      var waypoints = control.getWaypoints();
+      if (waypoints.length > 2) {
+        control.spliceWaypoints(2, waypoints.length - 2);
+      }
+    });
+
+  },[coordinates]);
   
-  var location1=12.9962056
-  var location2=77.5091314;
+  
   
   return (
     <div>

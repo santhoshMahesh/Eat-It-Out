@@ -5,10 +5,11 @@ import { MapContainer ,TileLayer,Popup,Marker, useMapEvents} from 'react-leaflet
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import LeafletRoutingMachine from './LeafletRoutingMachine';
+import LeafletGeocoder from './LeafletGeocoder';
 
 
 
-const Maps = () => {
+const Maps = ({coordinates}) => {
   const position = [12.9716, 77.5946];
 
   return(
@@ -18,8 +19,9 @@ const Maps = () => {
          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-       <LeafletRoutingMachine/>
-       <LocationFinderDummy/>
+       <LeafletRoutingMachine coordinates={coordinates} />
+       {/* <LeafletGeocoder/>  */}
+       {/* <LocationFinderDummy/> */}
      </MapContainer>
     </div>
 

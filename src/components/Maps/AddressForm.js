@@ -2,17 +2,17 @@ import React ,{useState,useEffect} from 'react'
 import { validPincode } from './Regex';
 import './AddressForm.css';
 //Imports for future component rearranging
+import { getPositionAddress } from '../../API/FwdGeocoding';
 
-const AddressForm = ({address}) => {
+
+const AddressForm = ({address,setAddress}) => {
  
-    
     const [street,setStreet]=useState("");
     const [city,setCity]=useState("");
     const [stateL,setStateL]=useState("");
     const [area,setArea]=useState("")
     const [postalCode,setPostalCode]=useState("");
     const [country,setCountry]=useState("");
-   
     
     const formValidator=()=>{
         if(!(street.trim()!=="" && city.trim()!=="" && stateL.trim()!=="" && (postalCode.trim!=="" && validPincode.test(postalCode))&& country.trim()!=="")){
@@ -26,13 +26,10 @@ const AddressForm = ({address}) => {
 
     const handleSubmit=(e)=>{
       e.preventDefault();
-      address.road=street;
-      address.city=city;
-      address.country=country
-      address.state=stateL
-      address.postcode=postalCode
-      address.suburb=area;
+      setAddress({road:street,city:city,country:country,state:stateL,postcode:postalCode,suburb:area})
+      console.log(address)
     }
+
 
     useEffect(()=>{
       setStreet(address.road)

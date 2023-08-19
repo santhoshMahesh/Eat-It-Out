@@ -5,7 +5,7 @@ const URL='https://forward-reverse-geocoding.p.rapidapi.com/v1/forward'
 
   export const getPositionAddress=async (street,city,state,postalcode,country)=>{
     try {
-      const {date:{ data }} = await axios.get(URL,{
+      const {data} = await axios.get(URL,{
         params: {
             street: street,
             city: city,
