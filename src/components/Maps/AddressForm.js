@@ -55,7 +55,7 @@ const AddressForm = ({address,setAddress}) => {
     <input className="address" value={postalCode} name="postalCode" onChange={(e)=>setPostalCode(e.target.value)} type="text" />
     <label>Country</label>
     <input className="address" value={country} name="country" onChange={(e)=>setCountry(e.target.value)} type="text" />
-    <button type="submit">Confirm Location</button>
+    <button class="submit" type="submit">Confirm Location</button>
     </form>
     </div>    
   )

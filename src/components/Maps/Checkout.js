@@ -1,23 +1,23 @@
 import React,{useState,useEffect} from 'react'
 import Maps from './Maps'
 import AddressForm from './AddressForm'
-
 import {getPlacesData} from '../../API/RevGeoCoding';
 import useGetGeolocation from '../../API/useGetGeolocation';
 import { getPositionAddress } from '../../API/FwdGeocoding';
-
+import Total from './Total';
 
 const Checkout = () => {
+  
   const location=useGetGeolocation();
   const [address,setAddress]=useState({})
   const [coordinates,setCoordinates]=useState([])
-
+  const [distance,setDistance]=useState(0)
+  
  
   useEffect(()=>{
     setCoordinates([location.coordinates.lat,location.coordinates.lng])
     getPlacesData(location.coordinates.lat,location.coordinates.lng)
     .then((data)=>{
-    
       if (typeof(data)!="undefined"){
         setAddress(data);
       }
@@ -28,17 +28,21 @@ const Checkout = () => {
     console.log(address)
     getPositionAddress(address.street,address.city,address.state,address.postalCode,address.country)
     .then((data)=>{
-      console.log(data)
       setCoordinates([data[0].lat,data[0].lon])
     })
   },[address])
 
+  useEffect(()=>{
+    console.log(`I am the ${distance/1000}`)
+  },[distance])
  
   
   return (
     <div>
-      <Maps coordinates={coordinates}/>
+      <Maps coordinates={coordinates} setDistance={setDistance} />
       <AddressForm address={address} setAddress={setAddress}/>
+      <Total distance={distance} />
+      <button class="submit" type="submit">Confirm Location</button>
     </div>
   )
 }

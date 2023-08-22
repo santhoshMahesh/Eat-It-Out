@@ -8,7 +8,7 @@
     box-sizing: border-box;
   }
   
-  button {
+  .submit {
     width: 40%;
     background-color: #4CAF50;
     color: white;
@@ -20,16 +20,18 @@
     
   }
   
-  button:hover {
+  .submit:hover {
     background-color: #45a049;
   }
   
   .AddForm {
     margin-top:50px;
     margin-left:15%;
-    width: 70%;
+    width: 40%;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    box-shadow: 0 10px 25px 0 rgba(0,0,0,.2);
+   
   }
   

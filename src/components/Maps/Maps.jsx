@@ -9,7 +9,7 @@ import LeafletGeocoder from './LeafletGeocoder';
 
 
 
-const Maps = ({coordinates}) => {
+const Maps = ({coordinates,setDistance}) => {
   const position = [12.9716, 77.5946];
 
   return(
@@ -19,7 +19,7 @@ const Maps = ({coordinates}) => {
          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-       <LeafletRoutingMachine coordinates={coordinates} />
+       <LeafletRoutingMachine coordinates={coordinates} setDistance={setDistance} />
        {/* <LeafletGeocoder/>  */}
        {/* <LocationFinderDummy/> */}
      </MapContainer>

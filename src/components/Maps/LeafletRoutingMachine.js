@@ -4,9 +4,8 @@ import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import {useMap} from "react-leaflet";
 
-const LeafletRoutingMachine = ({coordinates}) => {
+const LeafletRoutingMachine = ({coordinates,setDistance}) => {
   const  map=useMap();
-  const [data, setData] = useState(null);
   
   useEffect(()=>{
     const control=L.Routing.control({
@@ -16,12 +15,6 @@ const LeafletRoutingMachine = ({coordinates}) => {
         weight:6,
       }
     }).addTo(map)
-  
-    control.on('routeselected', function (e) {
-      const route = e.route;
-      const distance = route.summary.totalDistance; // Get the total distance in meters
-      console.log(`Total Distance: ${distance} meters`);
-    });
 
     control.on('waypointschanged', function (e) {
       var waypoints = control.getWaypoints();
@@ -29,11 +22,17 @@ const LeafletRoutingMachine = ({coordinates}) => {
         control.spliceWaypoints(2, waypoints.length - 2);
       }
     });
+  
+    control.on('routeselected', function (e) {
+      const route = e.route;
+      const distance = route.summary.totalDistance; // Get the total distance in meters
+      setDistance(distance)
+    });
+
 
   },[coordinates]);
   
-  
-  
+
   return (
     <div>
       <h1>hello</h1>

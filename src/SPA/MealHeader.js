@@ -1,7 +1,6 @@
 import React, { useState,useContext } from 'react';
 import Header from '../components/Layout/Header';
 import Cart from '../components/Cart/Cart';
-import CartProvider from '../store/CartProvider';
 import Meals from '../Meals/Meals'
 
 export const UserContext=React.createContext();
@@ -18,13 +17,11 @@ function MealHeader(){
     setCartIsShown(false);
   }
   return (
-    <CartProvider>
+      <main>
       {cartIsShown && <Cart hideCartHandler={hideCartHandler}/>}
       <Header onShowCart={showCartHandler}/>
-      <main>
       <Meals/>
       </main>
-    </CartProvider>
   )
 }
 
