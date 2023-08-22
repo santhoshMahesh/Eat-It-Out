@@ -5,6 +5,7 @@ import {getPlacesData} from '../../API/RevGeoCoding';
 import useGetGeolocation from '../../API/useGetGeolocation';
 import { getPositionAddress } from '../../API/FwdGeocoding';
 import Total from './Total';
+import './checkout.css'
 
 const Checkout = () => {
   
@@ -38,12 +39,13 @@ const Checkout = () => {
  
   
   return (
-    <div>
-      <Maps coordinates={coordinates} setDistance={setDistance} />
+    <main>
+    <Maps coordinates={coordinates} setDistance={setDistance} />
+    <div className="summary">
       <AddressForm address={address} setAddress={setAddress}/>
       <Total distance={distance} />
-      <button class="submit" type="submit">Confirm Location</button>
     </div>
+    </main>
   )
 }
 

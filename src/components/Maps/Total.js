@@ -1,18 +1,31 @@
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import { useContext } from 'react';
 import CartContext from '../../store/cart-context';
 import './Totalbill.css'
-import { useEffect } from 'react/cjs/react.production.min';
+
 
 const Total = ({distance}) => {
 const cartCtx=useContext(CartContext);
+const [km,setKm]=useState();
+const [priceKm,setPriceKm]=useState();
+const [pay,setPay]=useState(cartCtx.totalAmount);
+
+
+
+console.log(cartCtx)
 
 useEffect(()=>{
- const D=distance/1000;
- const dist=D.toFixed(2);
+  const dist=distance/1000;
+  const d=dist.toFixed(2)
+  const dCharges=d*5
+  const GTotal=cartCtx.totalAmount+dCharges
+  setKm(d);
+  setPriceKm(dCharges.toFixed(2));
+  setPay(GTotal.toFixed(2));
+  
 
-},[distance])
-console.log(cartCtx)
+},[distance,cartCtx])
+
   return (
     <div className="Total">
         {cartCtx.items.map((item)=>(
@@ -30,11 +43,9 @@ console.log(cartCtx)
             Delivery charged per km is 5$ 
             </i>
         </p>    
-        <h1>distance={dist}x5= {ss*5}</h1>
-        <h1>Total:</h1>
-        
-
-      
+        <h1>Distance:{km}</h1>
+        <h1>Total:{priceKm}</h1>
+        <h1>Grand Total:{pay}</h1>
     </div>
   )
 }
